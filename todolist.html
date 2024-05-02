@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <title>To-Do List</title>
+    <style>
+      body{
+        position:relative;
+        margin:0%;
+      
+      }
+
+      #taskbutton{
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          font-weight: bold;
+          color: #ffffff;
+          background-color:green;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+          
+      }
+      #taskbutton:hover {
+        background-color: rgb(20, 240, 20);
+      } 
+      #tittle{
+        font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+      }
+ #mytask{
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  color:blueviolet
+ }
+ footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+    </style>
+  </head>
+  <body>
+    <center>
+    <div class="text-centre">
+      <h1 style="color:red; " id="tittle">To-Do List</h1>
+  
+      <div class="card" style="background-color:rgb(255, 255, 153)">
+        <div class="card-body" >
+          <h2 style="background-color:rgb(204, 0, 153); color:white">Add your task</h2>
+          <div class="input" style="background-color: rgb(255, 102, 153); height: 10vh ; width: 60%; font-size: 30px; border-radius: 10px; border-color:blue; justify-content: center">
+
+            <h3>  Enter your task <input type="text" id="t1"  /></h3>
+          </div>
+          <br />
+          <button onclick="add()" id="taskbutton">Add Task</button>
+        </div>
+      </div>
+      
+    </div>
+    <center/>
+      
+      <h2 id="mytask"><--MY TASK--></h2>
+    </div>
+    <div id="d2"></div>
+    <footer>To-Do list by Sonika</footer>
+    <script>
+      let count = 1;
+      function add() {
+        let row = document.createElement("div");
+        row.style.backgroundColor = "rgb(102, 204, 255)";
+        row.style.marginTop="10px"
+        
+        row.style.width = "80px";
+        row.style.height = "80px";
+        let notevalue = document.querySelector("#t1").value;
+        row.innerHTML = notevalue;
+        let btn = document.createElement("button");
+        btn.style.backgroundColor="rgb(255, 0, 0)"
+        btn.style.border="none";
+        btn.style.borderRadius="4px";
+        btn.style.cursor= "pointer";
+
+        btn.innerHTML = "Delete";
+        let x = "btn" + count++;
+        btn.setAttribute("id", `${x}`);
+        btn.setAttribute("onclick", `removenote(${x})`);
+        row.append(btn);
+        let parnt = document.querySelector("#d2");
+        parnt.append(row);
+      }
+      function removenote(arg) {
+        arg.parentElement.remove();
+      }
+    </script>
+  </body>
+</html>
